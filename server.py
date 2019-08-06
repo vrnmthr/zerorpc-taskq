@@ -145,7 +145,7 @@ class MyService:
     def _start_and_register_worker(self):
         port = random.randint(5000, 6000)
         endpoint = "tcp://127.0.0.1:{}".format(port)
-        cmd = "python3 new_worker.py {}".format(endpoint)
+        cmd = "python3 worker.py {}".format(endpoint)
         proc = subprocess.Popen(cmd, shell=True)
         client = zerorpc.Client(endpoint, timeout=100000, heartbeat=None)
         worker = Worker(port, proc, client)
