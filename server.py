@@ -59,7 +59,10 @@ class Request:
 class MyService:
 
     def __init__(self, num_workers=1):
+
+        # SWITCH OUT THIS TASK QUEUE FOR WHATEVER SPECIALIZED CUSTOM IMPLEMENTATIONS YOU LIKE
         self.taskq = Queue()
+
         # start the task daemon automatically
         gevent.spawn(self._taskd)
 
@@ -88,6 +91,7 @@ class MyService:
                 self.bound.release()
 
     def _find_free_worker(self):
+        # FREE WORKER
         for id in self.workers:
             if self.workers[id].pid is None:
                 return self.workers[id]

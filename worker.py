@@ -1,7 +1,8 @@
 import argparse
+import time
 
 import zerorpc
-import time
+
 
 class MyService:
     def __init__(self):
